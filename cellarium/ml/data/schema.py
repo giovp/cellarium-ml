@@ -78,15 +78,15 @@ class AnnDataSchema:
                         f".obs columns for anndata passed in ({value.columns}) do not match .obs columns "
                         f"of the reference anndata ({ref_value.columns})."
                     )
-            elif attr in ["var", "var_names"]:
-                # For var compare if two DataFrames have the same shape and elements
-                # and the same row/column index.
-                # For var_names compare the elements inside the Index object and their order
-                if not ref_value.equals(value):
-                    raise ValueError(
-                        f".{attr} attribute for anndata passed in does not match .{attr} attribute "
-                        "of the reference anndata."
-                    )
+            # elif attr in ["var", "var_names"]:
+            #     # For var compare if two DataFrames have the same shape and elements
+            #     # and the same row/column index.
+            #     # For var_names compare the elements inside the Index object and their order
+            #     if not ref_value.equals(value):
+            #         raise ValueError(
+            #             f".{attr} attribute for anndata passed in does not match .{attr} attribute "
+            #             "of the reference anndata."
+            #         )
             elif attr in ["layers", "obsm", "varm", "varp"]:
                 # compare the keys
                 if not set(ref_value.keys()) == set(value.keys()):
